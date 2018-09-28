@@ -26,7 +26,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface PetRepository extends JpaRepository<Pet, Integer> {
 
-    
+	List<Pet> findByBirthDateBetweenOrderByBirthDateAsc(Date date1, Date date2);
+	
+	Pet findById(Integer id);
+	
+	Pet save(Pet p);
+	
+	List<Pet> findAll();
     
 }
 

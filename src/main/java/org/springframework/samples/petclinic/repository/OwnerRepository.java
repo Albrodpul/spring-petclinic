@@ -15,13 +15,21 @@
  */
 package org.springframework.samples.petclinic.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.samples.petclinic.model.Owner;
 
 
 public interface OwnerRepository extends JpaRepository<Owner, Integer> {
+	
+	List<Owner> findAll();
 
     Owner findById(Integer id);
+    
+    List<Owner> findByFirstNameContainingOrLastNameContaining(String firstName, String lastName);
+    
+    List<Owner> findByOrderByLastName();
     
 }
  

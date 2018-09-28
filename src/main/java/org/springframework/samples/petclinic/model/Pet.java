@@ -19,6 +19,10 @@ import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -60,6 +64,7 @@ public class Pet extends NamedEntity {
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
+    @JsonBackReference
     private Owner owner;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="petId", fetch = FetchType.EAGER)

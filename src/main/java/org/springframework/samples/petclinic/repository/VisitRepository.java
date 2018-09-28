@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,5 +25,10 @@ public interface VisitRepository extends JpaRepository<Visit, Integer> {
 
     List<Visit> findByPetId(Integer petId);
    
+    Visit save(Visit v);
+    
+    List<Visit> findAll();
+    
+    List<Visit> findTop4ByOrderByDateDesc();
    
 }
